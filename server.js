@@ -17,13 +17,14 @@ const db = knex({
   },
 });
 
+console.log(db.select('*').from('users'));
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send(db.users);
+  res.send('it its working');
 });
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', (req, res) => {
